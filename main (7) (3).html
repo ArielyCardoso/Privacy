@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ariely Cardoso - Privacy</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: #fff;
+      color: #333;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .topbar-left img {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+    }
+
+    .topbar-left span {
+      font-weight: bold;
+      font-size: 18px;
+      color: #222;
+    }
+
+    .banner {
+      position: relative;
+      height: 200px;
+      background: url('https://i.postimg.cc/httTKrbd/IMG-20250801-192554.jpg') center/cover no-repeat;
+    }
+
+    .profile-pic {
+      position: absolute;
+      bottom: -40px;
+      left: 20px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px solid white;
+      overflow: hidden;
+    }
+
+    .profile-pic img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .profile-info {
+      padding: 60px 20px 10px;
+    }
+
+    .profile-info h2 {
+      margin: 0;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .selo-verificado {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      background: #007BFF;
+      clip-path: polygon(50% 0%, 90% 25%, 90% 75%, 50% 100%, 10% 75%, 10% 25%);
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      box-shadow: 0 0 3px rgba(0,0,0,0.3);
+      flex-shrink: 0;
+    }
+
+    .verified {
+      color: #ff7b00;
+    }
+
+    .profile-info p {
+      margin: 5px 0;
+      color: #666;
+    }
+
+    .insta-button {
+      display: inline-block;
+      border: 1px solid #ccc;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 14px;
+      text-decoration: none;
+      color: #333;
+      margin-top: 5px;
+    }
+
+    .stats-bar {
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .stats-bar span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .plan-section {
+      padding: 20px;
+    }
+
+    .section-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .plan {
+      background: linear-gradient(90deg, #ff9472, #f2709c);
+      color: white;
+      border-radius: 40px;
+      padding: 15px 20px;
+      font-weight: bold;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 15px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .tabs {
+      display: flex;
+      border-top: 1px solid #eee;
+      border-bottom: 2px solid #eee;
+    }
+
+    .tab {
+      flex: 1;
+      text-align: center;
+      padding: 12px 0;
+      font-weight: bold;
+      color: #777;
+    }
+
+    .tab.active {
+      color: #ff5e62;
+      border-bottom: 3px solid #ff5e62;
+      background: #ffeae8;
+    }
+
+    .locked-content {
+      text-align: center;
+      padding: 40px 20px;
+      background: #fdf7f4;
+    }
+
+    .locked-content img {
+      width: 40px;
+      margin-bottom: 15px;
+    }
+
+    /* POP-UP */
+    #popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .popup-content {
+      background: white;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      text-align: center;
+      padding: 0;
+    }
+
+    .popup-banner img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .popup-profile-pic {
+      position: absolute;
+      top: 110px;
+      left: 16px;
+      width: 70px;
+      height: 70px;
+      border: 3px solid white;
+      border-radius: 50%;
+      overflow: hidden;
+      background: white;
+    }
+
+    .popup-profile-pic img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .popup-info {
+      padding: 60px 20px 20px;
+    }
+
+    .popup-info h2 {
+      margin-top: 0;
+      font-size: 20px;
+    }
+
+    .popup-preco {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 8px 0;
+    }
+
+    .popup-desc {
+      margin-bottom: 16px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .popup-pix {
+      background: #f1f1f1;
+      padding: 10px;
+      border-radius: 10px;
+      word-break: break-word;
+      margin-bottom: 12px;
+    }
+
+    .popup-content button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(to right, #ff7e5f, #ff9966);
+      color: white;
+      border: none;
+      border-radius: 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .popup-content .close {
+      position: absolute;
+      top: 10px;
+      right: 16px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="topbar-left">
+      <img src="https://i.postimg.cc/Y9rwPvwM/Screenshot-2025-08-01-19-36-34-964-com-android-chrome-edit.jpg" alt="Logo">
+      <span>PRIVACY</span>
+    </div>
+  </div>
+
+  <div class="banner">
+    <div class="profile-pic">
+      <img src="https://i.postimg.cc/XNKCFhs5/ra3yuc.jpg" alt="Nayara">
+    </div>
+  </div>
+
+  <div class="profile-info">
+    <h2>
+      Ariely Cardoso
+      <span class="selo-verificado">✔️</span>
+    </h2>
+    <p>@ArielyCardoso</p>
+    <p>Você já me imaginou assim? Agora pode ver de verdade. 😈 💕</p>
+    <a href="https://instagram.com" class="insta-button">📷 Instagram</a>
+  </div>
+
+  <div class="plan-section">
+    <div class="section-title">Assinaturas</div>
+    <button class="plan" onclick="abrirPopup('1 Mês', 'R$ 29,90')">1 Mês <span>R$ 29,90</span></button>
+
+    <div class="section-title">Promoções</div>
+    <button class="plan" onclick="abrirPopup('3 Meses', 'R$ 49,90')">3 Meses <span>R$ 49,90</span></button>
+    <button class="plan" onclick="abrirPopup('Vitalicio', 'R$ 99,99')">Vitalicio <span>R$ 99,99</span></button>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active">700 postagens</div>
+    <div class="tab">1.600 mídias</div>
+  </div>
+
+  <div class="locked-content">
+    <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="cadeado" />
+    <p>Conteúdo disponível após assinatura</p>
+    <div class="stats-bar">
+      <span>📷 700</span>
+      <span>🎥 1.200</span>
+      <span>❤️ 58.8K</span>
+    </div>
+  </div>
+
+  <!-- POP-UP -->
+  <div id="popup">
+    <div class="popup-content">
+      <span class="close" onclick="fecharPopup()">×</span>
+
+      <div class="popup-banner">
+        <img src="https://i.postimg.cc/httTKrbd/IMG-20250801-192554.jpg" alt="Banner">
+      </div>
+
+      <div class="popup-profile-pic">
+        <img src="https://i.postimg.cc/XNKCFhs5/ra3yuc.jpg" alt="Perfil">
+      </div>
+
+      <div class="popup-info">
+        <h2 id="popupTitulo">Assinatura</h2>
+        <p class="popup-preco" id="popupValor">R$ 00,00</p>
+        <p class="popup-desc">Acesse conteúdos exclusivos da criadora</p>
+        <div class="popup-pix" id="chavePix"></div>
+        <button onclick="copiarPix()">Copiar chave Pix</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    function abrirPopup(plano, valor) {
+      document.getElementById('popup').style.display = 'flex';
+      document.getElementById('popupTitulo').innerText = plano;
+      document.getElementById('popupValor').innerText = valor;
+    }
+
+    function fecharPopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+
+    function copiarPix() {
+      const chave = document.getElementById("chavePix").innerText;
+      const plano = document.getElementById("popupTitulo").innerText;
+
+      navigator.clipboard.writeText(chave).then(() => {
+      
+
+        // Redirecionamento conforme o plano
+        let linkCheckout = "#";
+
+        if (plano.includes("1 Mes")) {
+          linkCheckout = "https://app.pushinpay.com.br/#/service/pay/9F888879-E06D-456C-B898-5E9C1A519223";
+        } else if (plano.includes("3 Meses")) {
+          linkCheckout = "https://app.pushinpay.com.br/service/pay/9F8888CA-5C1B-4256-B120-80A0A3EB061A";
+        } else if (plano.includes("Vitalicio")) {
+          linkCheckout = "https://app.pushinpay.com.br/service/pay/9F888924-6B39-40B3-B2EC-C7045BB5E545";
+        }
+
+        window.location.href = linkCheckout;
+      });
+    }
+  </script>
+
+</body>
+</html>
