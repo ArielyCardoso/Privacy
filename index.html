@@ -343,6 +343,7 @@
     }
 
     .midia-grid {
+      background-color: #fff !important; /* branco */
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 8px;
@@ -352,7 +353,7 @@
       width: 100%;
       aspect-ratio: 1 / 1;
       border-radius: 10px;
-      background-color: #f5ede3;
+      background-color: #fff !important; /* branco */
       position: relative;
       overflow: hidden;
       cursor: pointer;
@@ -520,10 +521,10 @@ body {
 </div>
 <div class="plans">
 <h3>Assinaturas</h3>
-<button class="plan-btn" data-link="https://app.pushinpay.com.br/service/pay/9F888879-E06D-456C-B898-5E9C1A519223">1 mês <span>R$ 29,90</span></button>
+<button class="plan-btn" data-link="https://app.pushinpay.com.br/service/pay/9f94c2db-fad5-433f-a2d4-cba1ec567284">1 mês <span>R$ 25,00</span></button>
 <h3>Promoções</h3>
-<button class="plan-btn" data-link="https://app.pushinpay.com.br/service/pay/9F8888CA-5C1B-4256-B120-80A0A3EB061A">3 meses (10% off) <span>R$ 49,90</span></button>
-<button class="plan-btn" data-link="https://app.pushinpay.com.br/service/pay/9F888924-6B39-40B3-B2EC-C7045BB5E545">Vitalício <span>R$ 99,99</span></button>
+<button class="plan-btn" data-link="https://app.pushinpay.com.br/service/pay/9f94c39e-bf5d-46ba-b22f-5b3b59c93dec">3 meses (10% off) <span>R$ 67,50</span></button>
+<button class="plan-btn" data-link="https://app.pushinpay.com.br/service/pay/9f94c431-1dd5-4ec6-9cde-f5284a37fc74">6 meses (10% off) <span>R$ 135,00</span></button>
 </div>
 <div class="profile-tabs-bottom">
 <div class="tab active">
@@ -549,7 +550,7 @@ body {
 <img src="https://i.postimg.cc/x8KNkNFw/IMG-20250807-005842.jpg" style="width: 100%; border-radius: 10px; object-fit: cover;"/>
 </div>
 <div id="abaMidias" style="display: none; margin-top: 15px;">
-<div style="background-color: #121212; border-radius: 20px; padding: 10px;">
+<div style="background-color: #fff !important; /* branco */; border-radius: 20px; padding: 10px;">
 <div style="display: flex; justify-content: space-around; margin-bottom: 10px;">
 <span style="color: #ff7754; background-color: #2b1a12; padding: 5px 15px; border-radius: 20px;">Todos</span>
 <span style="color: #000;">Fotos</span>
@@ -687,9 +688,10 @@ body {
     botao.addEventListener('click', () => {
       const precoSpan = botao.querySelector('span');
       const preco = precoSpan ? precoSpan.textContent : '';
-      const nomePlano = botao.textContent.replace(preco, '').trim();
+      const nomePlanano = botao.textContent.replace(preco, '').trim();
 
-      popupPlanName.textContent = nomePlano;popupPlanPrice.textContent = preco;
+      popupPlanName.textContent = nomePlano;
+      popupPlanPrice.textContent = preco;
 
       const linkDoPlano = botao.getAttribute('data-link');
       if (linkDoPlano) {
@@ -722,4 +724,3 @@ body {
   </script>
 </div></div></body>
 </html>
-  
