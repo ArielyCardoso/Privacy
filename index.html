@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8"/>
@@ -187,7 +188,7 @@
     }
 
     .social-icons i {
-      background: #222;
+      background: #444;
       padding: 10px;
       border-radius: 50%;
       font-size: 18px;
@@ -523,7 +524,7 @@ body {
 <button class="plan-btn" data-link="https://app.pushinpay.com.br/#/service/pay/9F888879-E06D-456C-B898-5E9C1A519223">1 mês <span>R$ 29,90</span></button>
 <h3>Promoções</h3>
 <button class="plan-btn" data-link="https://app.pushinpay.com.br/#/service/pay/9F8888CA-5C1B-4256-B120-80A0A3EB061A">3 meses (10% off) <span>R$ 49,90</span></button>
-<button class="plan-btn" data-link="https://app.pushinpay.com.br/#/service/pay/9F9D5520-14C4-44F8-ACB3-AFCD9E5A2727">Vitalício (10% off) <span>R$ 99,99</span></button>
+<button class="plan-btn" data-link="https://app.pushinpay.com.br/#/service/pay/9F9D5520-14C4-44F8-ACB3-AFCD9E5A2727">Vitalicio (10% off) <span>R$ 99,99</span></button>
 </div>
 <div class="profile-tabs-bottom">
 <div class="tab active">
@@ -687,7 +688,7 @@ body {
     botao.addEventListener('click', () => {
       const precoSpan = botao.querySelector('span');
       const preco = precoSpan ? precoSpan.textContent : '';
-      const nomePlanano = botao.textContent.replace(preco, '').trim();
+      const nomePlano = botao.textContent.replace(preco, '').trim();
 
       popupPlanName.textContent = nomePlano;
       popupPlanPrice.textContent = preco;
